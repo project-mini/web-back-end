@@ -10,7 +10,9 @@ arr_proprietary = [
         name: 'Windows',
         details: 'Fully closed OS developed by Microsoft',
         genre: ['OS', 'Microsoft', 'Operating System'],
-        alternative: []
+        alternative: [],
+        upvotes: 0,
+        downvotes: 0
     }
 ];
 
