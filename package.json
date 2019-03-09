@@ -1,24 +1,15 @@
 {
-  "name": "web-back-end",
+  "name": "main",
   "version": "1.0.0",
-  "description": "This repo contains the back end of our project.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/project-mini/web-back-end.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/project-mini/web-back-end/issues"
-  },
-  "homepage": "https://github.com/project-mini/web-back-end#readme",
+  "description": "",
   "dependencies": {
-    "express": "^4.16.4",
-    "joi": "^14.3.1"
+    "mongoose": "^5.4.17"
   }
 }

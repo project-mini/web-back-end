@@ -1,0 +1,12 @@
+[
+    {
+        "name" : "Windows",
+        "shortDescription" : "Closed source OS for dummies",
+        "tags" : ["OS","Microsoft"]
+    },
+    {
+        "name" : "Windows media player",
+        "shortDescription" : "Closed source OS for dummies",
+        "tags" : ["Microsoft","MediaPlayer"]
+    }
+]

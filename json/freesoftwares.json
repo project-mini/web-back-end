@@ -1,0 +1,18 @@
+[
+    {
+        "name" : "windows",
+        "shortdescription" : "a free os by rms himself!",
+        "tags" : ["os","gnu"],
+        "upvotes" : 0,
+        "downvotes" : 0,
+		"license" : "gplv3"
+    },
+    {
+        "name" : "windows",
+        "shortdescription" : "a free os by rms himself again!",
+        "tags" : ["os","gnu"],
+        "upvotes" : 0,
+        "downvotes" : 0,
+		"license" : "gplv3"
+    }
+]
