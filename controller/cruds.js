@@ -46,7 +46,10 @@ async function getAllProprietarySoftwares() {
     const proprietary = await Proprietarysoftware
         .find()
         .select({ name: 1, shortDescription: 1 });
-    console.log(proprietary);
+    if(proprietary.length!=0)
+        console.log(proprietary);
+    else    
+        console.log('No proprietary softwares found');
     return proprietary;
 }
 
