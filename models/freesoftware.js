@@ -20,6 +20,10 @@ const fsSchema = new mongoose.Schema({
     license: {
         type: String,
         required: true
+    },
+    suggestedBy: {
+        type: String,
+        required: true
     }
 });
 

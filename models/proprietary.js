@@ -19,6 +19,10 @@ const proprietarySchema = new mongoose.Schema({
             },
             message : 'specify at least one tag for proprietary software'
         }
+    },
+    requestedBy: {
+        type: String,
+        required: true
     }
 });
 
