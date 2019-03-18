@@ -14,3 +14,7 @@ mongo host-domain:port/database-name -u <dbuser> -p <dbpassword>
     * ```username : your-username```
     * ```password : your-password```
 4. ```Authentication Database : your-database-name```
+
+## To connect onto database from inside mongoose:
+* Use the string : 
+mongodb://<dbuser>:<dbpassword>@ds<hostdomain>:port/dbname
