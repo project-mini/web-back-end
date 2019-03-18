@@ -64,9 +64,80 @@ async function getAlternatives(id) {
     return alternatives;
 }
 
+async function increaseUpvotes(id){
+    const freeSoftware = await Freesoftware.findByIdAndUpdate(id,{
+        $inc : {
+            upVotes : 1
+        }
+    }, {new : true});
+    if(!freeSoftware){
+        console.log('not found free software for '+id);
+        return;
+    }
+    console.log(freeSoftware);
+    
+}
+
+async function increaseDownvotes(id){
+    const freeSoftware = await Freesoftware.findByIdAndUpdate(id,{
+        $inc : {
+            downVotes : 1
+        }
+    }, {new : true});
+    if(!freeSoftware){
+        console.log('not found free software for '+id);
+        return;
+    }
+    console.log(freeSoftware);
+}
+
+async function decreaseDownvotes(id){
+    const freeSoftware = await Freesoftware.findByIdAndUpdate(id,{
+        $inc : {
+            downVotes : -1
+        }
+    }, {new : true});
+    if(!freeSoftware){
+        console.log('not found free software for '+id);
+        return;
+    }
+    console.log(freeSoftware);
+    if(freeSoftware.downVotes < 0){
+        await Freesoftware.findByIdAndUpdate(id,{
+            $set : {
+                downVotes : 0
+            }
+        });
+    }
+}
+
+async function decreaseUpvotes(id){
+    const freeSoftware = await Freesoftware.findByIdAndUpdate(id,{
+        $inc : {
+            upVotes : -1
+        }
+    }, {new : true});
+    if(!freeSoftware){
+        console.log('not found free software for '+id);
+        return;
+    }
+    console.log(freeSoftware);
+    if(freeSoftware.upVotes < 0){
+        await Freesoftware.findByIdAndUpdate(id,{
+            $set : {
+                upVotes : 0
+            }
+        });
+    }
+}
+
 module.exports.getAlternatives = getAlternatives;
 module.exports.addProprietarySoftware = createProprietarysoftware;
 module.exports.addFreeSoftware = createFreesoftware;
 module.exports.searchProprietarySoftwares = getProprietarysoftwares;
 module.exports.getAllProprietarySoftwares = getAllProprietarySoftwares;
 module.exports.getAllFreeSoftwares = getAllFreeSoftwares;
+module.exports.increaseUpvotes = increaseUpvotes;
+module.exports.decreaseUpvotes = decreaseUpvotes;
+module.exports.increaseDownvotes = increaseDownvotes;
+module.exports.decreaseDownvotes = decreaseDownvotes;

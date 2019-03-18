@@ -20,6 +20,30 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.put('/upvote/:id', async (req,res) => {
+    const freeSoftware = await controller.increaseUpvotes(req.params.id);
+    console.log(freeSoftware);
+    res.send('Updated Software:' + freeSoftware);
+});
+
+router.put('/downvote/:id', async (req,res) => {
+    const freeSoftware = await controller.increaseDownvotes(req.params.id);
+    console.log(freeSoftware);
+    res.send('Updated Software:' + freeSoftware);
+});
+
+router.put('/unupvote/:id', async (req,res) => {
+    const freeSoftware = await controller.decreaseUpvotes(req.params.id);
+    console.log(freeSoftware);
+    res.send('Updated Software:' + freeSoftware);
+});
+
+router.put('/undownvote/:id', async (req,res) => {
+    const freeSoftware = await controller.decreaseDownvotes(req.params.id);
+    console.log(freeSoftware);
+    res.send('Updated Software:' + freeSoftware);
+});
+
 router.get('/', async (req, res) => {
     const freeSoftwares = await controller.getAllFreeSoftwares();
     if (!freeSoftwares)
