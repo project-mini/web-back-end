@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 const Proprietarysoftware = require('../models/proprietary');
 const Freesoftware = require('../models/freesoftware');
 
-mongoose.connect('mongodb://localhost/softwares')
+// mongoose.connect('mongodb://localhost/softwares')
+console.log(process.env.ALT_USERNAME);
+loginCred = 'mongodb://' + process.env.ALT_USERNAME + ':' + process.env.ALT_PWD + '\@ds213645.mlab.com:13645/alterfoss';
+console.log(loginCred);
+mongoose.connect(loginCred, { useNewUrlParser: true })
     .then(() => console.log('Connection successful to "that of the database"!'))
     .catch(err => console.log(
         'Error in connection with respect to that of the database:',
@@ -64,68 +68,68 @@ async function getAlternatives(id) {
     return alternatives;
 }
 
-async function increaseUpvotes(id){
-    const freeSoftware = await Freesoftware.findByIdAndUpdate(id,{
-        $inc : {
-            upVotes : 1
+async function increaseUpvotes(id) {
+    const freeSoftware = await Freesoftware.findByIdAndUpdate(id, {
+        $inc: {
+            upVotes: 1
         }
-    }, {new : true});
-    if(!freeSoftware){
-        console.log('not found free software for '+id);
+    }, { new: true });
+    if (!freeSoftware) {
+        console.log('not found free software for ' + id);
         return;
     }
     console.log(freeSoftware);
-    
+
 }
 
-async function increaseDownvotes(id){
-    const freeSoftware = await Freesoftware.findByIdAndUpdate(id,{
-        $inc : {
-            downVotes : 1
+async function increaseDownvotes(id) {
+    const freeSoftware = await Freesoftware.findByIdAndUpdate(id, {
+        $inc: {
+            downVotes: 1
         }
-    }, {new : true});
-    if(!freeSoftware){
-        console.log('not found free software for '+id);
+    }, { new: true });
+    if (!freeSoftware) {
+        console.log('not found free software for ' + id);
         return;
     }
     console.log(freeSoftware);
 }
 
-async function decreaseDownvotes(id){
-    const freeSoftware = await Freesoftware.findByIdAndUpdate(id,{
-        $inc : {
-            downVotes : -1
+async function decreaseDownvotes(id) {
+    const freeSoftware = await Freesoftware.findByIdAndUpdate(id, {
+        $inc: {
+            downVotes: -1
         }
-    }, {new : true});
-    if(!freeSoftware){
-        console.log('not found free software for '+id);
+    }, { new: true });
+    if (!freeSoftware) {
+        console.log('not found free software for ' + id);
         return;
     }
     console.log(freeSoftware);
-    if(freeSoftware.downVotes < 0){
-        await Freesoftware.findByIdAndUpdate(id,{
-            $set : {
-                downVotes : 0
+    if (freeSoftware.downVotes < 0) {
+        await Freesoftware.findByIdAndUpdate(id, {
+            $set: {
+                downVotes: 0
             }
         });
     }
 }
 
-async function decreaseUpvotes(id){
-    const freeSoftware = await Freesoftware.findByIdAndUpdate(id,{
-        $inc : {
-            upVotes : -1
+async function decreaseUpvotes(id) {
+    const freeSoftware = await Freesoftware.findByIdAndUpdate(id, {
+        $inc: {
+            upVotes: -1
         }
-    }, {new : true});
-    if(!freeSoftware){
-        console.log('not found free software for '+id);
+    }, { new: true });
+    if (!freeSoftware) {
+        console.log('not found free software for ' + id);
         return;
     }
     console.log(freeSoftware);
-    if(freeSoftware.upVotes < 0){
-        await Freesoftware.findByIdAndUpdate(id,{
-            $set : {
-                upVotes : 0
+    if (freeSoftware.upVotes < 0) {
+        await Freesoftware.findByIdAndUpdate(id, {
+            $set: {
+                upVotes: 0
             }
         });
     }
