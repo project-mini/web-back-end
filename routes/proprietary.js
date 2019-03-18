@@ -19,6 +19,7 @@ router.get('/', async (req,res)=>{
         res.status(404).send('No result found for proprietary softwares');
         return;
     }
+    console.log(proprietary);
     res.send(proprietary);
 });
 
