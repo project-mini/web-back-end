@@ -46,7 +46,7 @@ router.put('/undownvote/:id', async (req,res) => {
 
 router.get('/', async (req, res) => {
     const freeSoftwares = await controller.getAllFreeSoftwares();
-    if (!freeSoftwares)
+    if (freeSoftwares.length == 0)
         return res.status(404).send('No result found for Alternative softwares');
 
     res.send(freeSoftwares);
@@ -55,7 +55,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const alternatives = await controller.getAlternatives(req.params.id);
     console.log(alternatives);
-    if (!alternatives)
+    if (alternatives.length == 0)
         return res.status(404).send('No alternatives found for' + req.params.id);
 
     res.send(alternatives);
