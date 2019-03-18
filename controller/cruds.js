@@ -3,9 +3,7 @@ const Proprietarysoftware = require('../models/proprietary');
 const Freesoftware = require('../models/freesoftware');
 
 // mongoose.connect('mongodb://localhost/softwares')
-console.log(process.env.ALT_USERNAME);
 loginCred = 'mongodb://' + process.env.ALT_USERNAME + ':' + process.env.ALT_PWD + '\@ds213645.mlab.com:13645/alterfoss';
-console.log(loginCred);
 mongoose.connect(loginCred, { useNewUrlParser: true })
     .then(() => console.log('Connection successful to "that of the database"!'))
     .catch(err => console.log(
