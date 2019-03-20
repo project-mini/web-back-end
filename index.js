@@ -14,4 +14,6 @@ app.use('/api/proprietary', proprietary);
 app.use('/api/alternatives', alternatives);
 app.use('/', root);
 
-app.listen(3000, () => console.log('Serving at port 3k...'));
+
+const PORT = process.env.PORT || 3000;
+app.listen(3000, () => console.log(`Serving at port ${PORT}...`));
