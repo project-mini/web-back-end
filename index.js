@@ -16,4 +16,4 @@ app.use('/', root);
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(3000, () => console.log(`Serving at port ${PORT}...`));
+app.listen(PORT, () => console.log(`Serving at port ${PORT}...`));
