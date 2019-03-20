@@ -8,7 +8,7 @@ const proprietary = require('./routes/proprietary');
 const alternatives = require('./routes/alternatives');
 const root = require('./routes/root');
 
-app.use(express.static('Public'));
+app.use(express.static('public'));
 
 app.use('/api/proprietary', proprietary);
 app.use('/api/alternatives', alternatives);
