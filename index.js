@@ -8,10 +8,12 @@ const proprietary = require('./routes/proprietary');
 const alternatives = require('./routes/alternatives');
 const root = require('./routes/root');
 
-app.use(express.static('Public'));
+app.use(express.static('public'));
 
 app.use('/api/proprietary', proprietary);
 app.use('/api/alternatives', alternatives);
 app.use('/', root);
 
-app.listen(3000, () => console.log('Serving at port 3k...'));
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Serving at port ${PORT}...`));
