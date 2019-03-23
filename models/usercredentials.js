@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 //schema for user credentials
 const user = new mongoose.Schema({
-    firstName: { 
+    firstName: {
         type: String,
         required: true
     },
@@ -13,24 +13,28 @@ const user = new mongoose.Schema({
     gender: {
         type: String,
         lowercase: true,
-        enum: ['male','female']
+        enum: ['male', 'female', 'others']
     },
     username: {
         type: String,
         required: true
     },
     password: {
+        // TODO : We can't be storing passwords as open string.
+        // Probably should implement a hash function.
         type: String,
         required: true
     },
     signUpTime: {
-        type : Date,
-        default : Date.now
+        type: Date,
+        default: Date.now
     },
     email: {
         type: String,
         lowercase: true,
-        match: /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/
+        match: /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/,
+        unique: true,
+        required: true
     },
     hasUpvoted: {
         type: Array,
