@@ -1,35 +1,35 @@
 API ENDPOINTS FOR THE INTEGRATION TEAM
 ======================================
 
-S.No    ENDPOINT                                FUNCTION
-----    --------                                --------
-
-1       'GET' /                                 Home Page
-
-2       'GET' /api/alternatives                 Return an array of all alternatives (Free Softwares)
-                                                as array of objects.
-
-3       'GET' /api/proprietary                  Returns an array of all proprietary softwares as an
-												array of objects.
-
-4		'POST' /api/alternatives				To add a new alternative to the free softwares. The 
-												body of the request contains the following fields:
-												
-													{
-														name: <The name of the software>,
-														shortDescription: <A one line description of it>,
-														handle: <A single keyword which will be used 
-																to assign it as an alternative>,
-														license: <The software's license>
-													}
-
-													e.g.:
-													{
-														name: "GNU/Linux",
-														shortDescription: "A free OS by GNU Foundation",
-														handle: "OS",
-														license: "GPLv3"
-													}
+S.No    ENDPOINT                                	FUNCTION
+----    --------                                	--------
+	
+1       'GET' /                                 	Home Page
+	
+2       'GET' /api/alternatives                 	Return an array of all alternatives (Free Softwares)
+                                                	as array of objects.
+	
+3       'GET' /api/proprietary                  	Returns an array of all proprietary softwares as an
+													array of objects.
+	
+4		'POST' /api/alternatives					To add a new alternative to the free softwares. The 
+													body of the request contains the following fields:
+													
+														{
+															name: <The name of the software>,
+															shortDescription: <A one line description of it>,
+															handle: <A single keyword which will be used 
+																	to assign it as an alternative>,
+															license: <The software's license>
+														}
+	
+														e.g.:
+														{
+															name: "GNU/Linux",
+															shortDescription: "A free OS by GNU Foundation",
+															handle: "OS",
+															license: "GPLv3"
+														}
 													
 													Each alternative software will be initialized with 0
 													upvotes and downvotes (Obvio)
