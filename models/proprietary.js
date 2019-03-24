@@ -17,10 +17,11 @@ const proprietarySchema = new mongoose.Schema({
             validator : function(v){
                 return v && v.length>0
             },
-            message : 'specify at least one tag for proprietary software'
+            message : 'Specify at least one tag for proprietary software'
         }
     },
     requestedBy: {
+        // This again should be email or id or something.
         type: String,
         required: true
     }
