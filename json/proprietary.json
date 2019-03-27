@@ -2,11 +2,31 @@
     {
         "name" : "Windows",
         "shortDescription" : "Closed source OS for dummies",
-        "tags" : ["OS","Microsoft"]
+        "tags" : ["os","microsoft"],
+		"requestedBy" : "killpr0cess"
     },
     {
         "name" : "Windows media player",
         "shortDescription" : "Closed source OS for dummies",
-        "tags" : ["Microsoft","MediaPlayer"]
+        "tags" : ["microsoft","mediaplayer"],
+		"requestedBy" : "killpr0cess"
+    },
+	{
+        "name" : "Adobe Photoshop",
+        "shortDescription" : "Closed source image editor",
+        "tags" : ["multimedia","editor"],
+		"requestedBy" : "killpr0cess"
+   	},
+	{
+        "name" : "Google Chrome",
+        "shortDescription" : "Closed source web browser",
+        "tags" : ["browser","internet"],
+		"requestedBy" : "killpr0cess"
+    },
+	{
+        "name" : "Opera Browser",
+        "shortDescription" : "Closed source Browser",
+        "tags" : ["browser","internet"],
+		"requestedBy" : "killpr0cess"
     }
 ]
