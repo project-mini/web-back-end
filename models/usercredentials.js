@@ -1,15 +1,18 @@
 const mongoose = require("mongoose");
-const Joi = require('joi');
+const Joi = require("joi");
+const PasswordComplexity = require("joi-password-complexity");
 
 //schema for user credentials
 const user = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
+    match: new RegExp("^[a-zA-Z' ]{1,50}$")
   },
   lastName: {
     type: String,
     required: true,
+    match: new RegExp("^[a-zA-Z' ]{1,50}$")
   },
   gender: {
     type: String,
@@ -19,7 +22,8 @@ const user = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    match: new RegExp("^[a-zA-Z\-_0-9]{3,30}$")
+    match: new RegExp("^[a-zA-Z0-9]{3,30}$"),
+    unique: true
   },
   password: {
     type: String,
@@ -28,7 +32,7 @@ const user = new mongoose.Schema({
   email: {
     type: String,
     lowercase: true,
-    match: new RegExp("^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}$"),
+    match: new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$"),
     maxlength: 255,
     unique: true,
     required: true
@@ -45,12 +49,31 @@ const user = new mongoose.Schema({
 
 function validateUser(user) {
   const schema = {
-    firstName: Joi.string().required(),
-    lastName: Joi.string().required(),
-    gender: Joi.string().required().options(['male', 'female', 'something-else']),
-    username: Joi.string().required().min(3).max(30).regex(new RegExp("^[a-zA-Z\-_0-9]{3,30}$")),
-    email: Joi.required().email(),
-  }  
+    firstName: Joi.string()
+      .required()
+      .regex(new RegExp("^[a-zA-Z' ]{1,50}$")),
+    lastName: Joi.string()
+      .required()
+      .regex(new RegExp("^[a-zA-Z' ]{1,50}$")),
+    gender: Joi.string()
+      .required()
+      .valid("male", "female", "something-else"),
+    username: Joi.string()
+      .required()
+      .min(3)
+      .max(30)
+      .regex(new RegExp("^[a-zA-Z-_0-9]{3,30}$")),
+    email: Joi.string()
+      .required()
+      .email(),
+    password: Joi.string().required()
+  };
+
+  const schemaError = Joi.validate(user, schema);
+  const passwordError = Joi.validate(user.password, new PasswordComplexity());
+
+  if (schemaError) return schemaError;
+  if (passwordError) return passwordError;
 }
 
 exports.User = mongoose.model("UserCredentials", user);
