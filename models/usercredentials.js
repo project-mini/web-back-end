@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Joi = require('joi');
+const passwordComplexity = require('joi-password-complexity')(Joi);
 
 //schema for user credentials
 const user = new mongoose.Schema({
@@ -50,7 +51,10 @@ function validateUser(user) {
     gender: Joi.string().required().options(['male', 'female', 'something-else']),
     username: Joi.string().required().min(3).max(30).regex(new RegExp("^[a-zA-Z\-_0-9]{3,30}$")),
     email: Joi.required().email(),
+    password: Joi.passwordComplexity()
   }  
+
+  return Joi.validate(user, schema);
 }
 
 exports.User = mongoose.model("UserCredentials", user);
