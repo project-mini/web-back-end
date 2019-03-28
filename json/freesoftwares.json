@@ -1,18 +1,56 @@
 [
     {
-        "name" : "windows",
+        "name" : "GNU",
         "shortdescription" : "a free os by rms himself!",
-        "tags" : ["os","gnu"],
         "upvotes" : 0,
         "downvotes" : 0,
-		"license" : "gplv3"
-    },
+		"handle" : "os",
+		"license" : "gplv3",
+    	"suggestedBy" : "killpr0cess"
+	},
     {
-        "name" : "windows",
+        "name" : "freeBSD",
         "shortdescription" : "a free os by rms himself again!",
-        "tags" : ["os","gnu"],
         "upvotes" : 0,
         "downvotes" : 0,
-		"license" : "gplv3"
+		"handle" : "os",
+		"license" : "gplv3",
+		"suggestedBy" : "killpr0cess"
+    },
+	{
+        "name" : "GIMP Photo Editor",
+        "shortdescription" : "a Free photo editor",
+        "upvotes" : 0,
+        "downvotes" : 0,
+		"handle" : "multimedia",
+		"license" : "MPL",
+		"suggestedBy" : "killpr0cess"
+    },
+	{
+        "name" : "Firefox",
+        "shortdescription" : "a Free Browser",
+        "upvotes" : 0,
+        "downvotes" : 0,
+		"handle" : "browser",
+		"license" : "MPL",
+		"suggestedBy" : "killpr0cess"
+    },
+	{
+        "name" : "TOR Browser",
+        "shortdescription" : "a Free Web Browser with layered encryption",
+        "upvotes" : 0,
+        "downvotes" : 0,
+		"handle" : "browser",
+		"license" : "MPL",
+		"suggestedBy" : "killpr0cess"
+    },
+	{
+        "name" : "VLC Media Player",
+        "shortdescription" : "a Free Media Player",
+        "upvotes" : 0,
+        "downvotes" : 0,
+		"handle" : "mediaplayer",
+		"license" : "gplv3",
+		"suggestedBy" : "killpr0cess"
     }
 ]

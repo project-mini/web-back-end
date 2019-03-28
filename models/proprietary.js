@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const proprietarySchema = new mongoose.Schema({
     name: {
         type : String,
-        lowercase : true,
         required : true
     },    
     shortDescription: {
@@ -21,7 +20,7 @@ const proprietarySchema = new mongoose.Schema({
         }
     },
     requestedBy: {
-        // This again should be email or id or something.
+        // This again should be email or id or something. NO- USERNAME
         type: String,
         required: true
     }

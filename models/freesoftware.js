@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const fsSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
-        lowercase: true
+        required: true
     },
     shortDescription: {
         type: String,
