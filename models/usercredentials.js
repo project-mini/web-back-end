@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Joi = require('joi');
 
 //schema for user credentials
 const user = new mongoose.Schema({
@@ -18,7 +19,7 @@ const user = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    match: new RegExp("^[a-zA-Z\-_0-9]{3,20}$")
+    match: new RegExp("^[a-zA-Z\-_0-9]{3,30}$")
   },
   password: {
     type: String,
@@ -42,4 +43,15 @@ const user = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("UserCredentials", user);
+function validateUser(user) {
+  const schema = {
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
+    gender: Joi.string().required().options(['male', 'female', 'something-else']),
+    username: Joi.string().required().min(3).max(30).regex(new RegExp("^[a-zA-Z\-_0-9]{3,30}$")),
+    email: Joi.required().email(),
+  }  
+}
+
+exports.User = mongoose.model("UserCredentials", user);
+exports.validateUser = validateUser;
