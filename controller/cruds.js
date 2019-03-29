@@ -18,6 +18,15 @@ async function createProprietarysoftware(properietary) {
     console.log(result);
 }
 
+async function getTopAlternatives(){
+    const freesoftware = await Freesoftware
+        .find()
+        .select({ name: 1, upVotes: 1, license: 1 });
+    if(freesoftware.length==0)
+        return 0;
+    
+}
+
 async function createFreesoftware(freeSoftware) {
     const freesoftware = new Freesoftware(freeSoftware);
     console.log('saving result to free softwares');
@@ -146,3 +155,4 @@ module.exports.increaseUpvotes = increaseUpvotes;
 module.exports.decreaseUpvotes = decreaseUpvotes;
 module.exports.increaseDownvotes = increaseDownvotes;
 module.exports.decreaseDownvotes = decreaseDownvotes;
+module.exports.getTopAlternatives = getTopAlternatives;

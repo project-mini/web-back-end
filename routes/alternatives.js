@@ -9,7 +9,8 @@ router.post('/', async (req, res) => {
             name: req.body.name,
             shortDescription: req.body.shortDescription,
             handle: req.body.handle,
-            license: req.body.license
+            license: req.body.license,
+            suggestedBy: req.body.suggestedBy
         };
         const result = await controller.addFreeSoftware(freeSoftware);
         console.log(result);

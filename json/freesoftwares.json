@@ -1,7 +1,7 @@
 [
     {
         "name" : "GNU",
-        "shortdescription" : "a free os by rms himself!",
+        "shortDescription" : "a free os by rms himself!",
         "upvotes" : 0,
         "downvotes" : 0,
 		"handle" : "os",
@@ -10,7 +10,7 @@
 	},
     {
         "name" : "freeBSD",
-        "shortdescription" : "a free os by rms himself again!",
+        "shortDescription" : "a free os by rms himself again!",
         "upvotes" : 0,
         "downvotes" : 0,
 		"handle" : "os",
@@ -19,7 +19,7 @@
     },
 	{
         "name" : "GIMP Photo Editor",
-        "shortdescription" : "a Free photo editor",
+        "shortDescription" : "a Free photo editor",
         "upvotes" : 0,
         "downvotes" : 0,
 		"handle" : "multimedia",
@@ -28,7 +28,7 @@
     },
 	{
         "name" : "Firefox",
-        "shortdescription" : "a Free Browser",
+        "shortDescription" : "a Free Browser",
         "upvotes" : 0,
         "downvotes" : 0,
 		"handle" : "browser",
@@ -37,7 +37,7 @@
     },
 	{
         "name" : "TOR Browser",
-        "shortdescription" : "a Free Web Browser with layered encryption",
+        "shortDescription" : "a Free Web Browser with layered encryption",
         "upvotes" : 0,
         "downvotes" : 0,
 		"handle" : "browser",
@@ -46,7 +46,7 @@
     },
 	{
         "name" : "VLC Media Player",
-        "shortdescription" : "a Free Media Player",
+        "shortDescription" : "a Free Media Player",
         "upvotes" : 0,
         "downvotes" : 0,
 		"handle" : "mediaplayer",
