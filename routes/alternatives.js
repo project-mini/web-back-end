@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const controller = require('../controller/cruds');
+const controller = require('../controller/cruds_softwares');
 
 router.post('/', async (req, res) => {
     try {
