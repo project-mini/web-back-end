@@ -22,7 +22,8 @@ const proprietarySchema = new mongoose.Schema({
     requestedBy: {
         // This again should be email or id or something. NO- USERNAME
         type: String,
-        required: true
+        required: true,
+        default: null
     }
 });
 
