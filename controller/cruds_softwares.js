@@ -31,8 +31,9 @@ async function getTopAlternatives(){
         .find()
         .select({ name: 1, upVotes: 1, license: 1 });
     if(freesoftware.length==0)
-        return 0;
-    
+      return 0;
+    else
+      return freesoftware;
 }
 
 async function createFreesoftware(freeSoftware) {

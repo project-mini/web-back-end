@@ -21,6 +21,8 @@ S.No    ENDPOINT                                	FUNCTION
 															handle: <A single keyword which will be used 
 																	to assign it as an alternative>,
 															license: <The software's license>
+															suggestedBy: <The username of the user who proposed
+																		this alternative>
 														}
 	
 														e.g.:
@@ -28,7 +30,8 @@ S.No    ENDPOINT                                	FUNCTION
 															name: "GNU/Linux",
 															shortDescription: "A free OS by GNU Foundation",
 															handle: "OS",
-															license: "GPLv3"
+															license: "GPLv3",
+															suggestedBy: "killPr0cess"
 														}
 													
 													Each alternative software will be initialized with 0
@@ -63,8 +66,19 @@ S.No    ENDPOINT                                	FUNCTION
 															tags: <A string array consisting of strings
 																  that will be matched against the handle
 																  of the alternative softwares to verify 
-																  it is an alternative>
+																  it is an alternative>,
+															requestedBy: <Username of the user who put up
+																		this proprietary software request>
 														}
+
+														eg.:
+														{
+															name: "windows",
+															shortDescription: "a closed source os",
+															tags: ['os','microsoft'],
+															requestedBy: "killPr0cess"
+														}
+
 
 11		'GET' /api/proprietary/<pattern>			Used to search for proprietary softwares. The pattern 
 													will be used as a regular expression to search for 

@@ -13,7 +13,7 @@ const fsSchema = new mongoose.Schema({
     upVotes: { type: Number, default: 0 },
     downVotes: { type: Number, default: 0 },
     handle: {
-        // What's this for @karan?
+        // What's this for @karan? I think u got it @m_zaink
         type: String,
         required: true
     },
@@ -22,7 +22,7 @@ const fsSchema = new mongoose.Schema({
         required: true
     },
     suggestedBy: {
-        // This really should be an id or email @karan
+        // This really should be an id or email @karan no! Give reason
         type: String,
         required: true
     }

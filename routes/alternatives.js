@@ -24,30 +24,38 @@ router.post('/', async (req, res) => {
 router.put('/upvote/:id', async (req,res) => {
     const freeSoftware = await controller.increaseUpvotes(req.params.id);
     console.log(freeSoftware);
-    res.send('Updated Software:' + freeSoftware);
+    res.send('Updated Software:');
 });
 
 router.put('/downvote/:id', async (req,res) => {
     const freeSoftware = await controller.increaseDownvotes(req.params.id);
     console.log(freeSoftware);
-    res.send('Updated Software:' + freeSoftware);
+    res.send('Updated Software');
 });
 
 router.put('/unupvote/:id', async (req,res) => {
     const freeSoftware = await controller.decreaseUpvotes(req.params.id);
     console.log(freeSoftware);
-    res.send('Updated Software:' + freeSoftware);
+    res.send('Updated Software:');
 });
 
 router.put('/undownvote/:id', async (req,res) => {
     const freeSoftware = await controller.decreaseDownvotes(req.params.id);
     console.log(freeSoftware);
-    res.send('Updated Software:' + freeSoftware);
+    res.send('Updated Software:');
 });
 
-router.get('/', async (req, res) => {
-    const freeSoftwares = await controller.getAllFreeSoftwares();
-    if (freeSoftwares.length == 0)
+// router.get('/', async (req, res) => {
+//     const freeSoftwares = await controller.getAllFreeSoftwares();
+//     if (freeSoftwares.length == 0)
+//         return res.status(404).send('No result found for Alternative softwares');
+
+//     res.send(freeSoftwares);
+// });
+
+router.get('/', async (req,res) => {
+    const freeSoftwares = await controller.getTopAlternatives();
+    if(freeSoftwares==0)
         return res.status(404).send('No result found for Alternative softwares');
 
     res.send(freeSoftwares);
