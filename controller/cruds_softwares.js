@@ -27,13 +27,63 @@ async function createProprietarysoftware(properietary) {
 }
 
 async function getTopAlternatives(){
-    const freesoftware = await Freesoftware
+    var freesoftware = await Freesoftware
         .find()
         .select({ name: 1, upVotes: 1, license: 1 });
+    //return freesoftware
+    console.log(freesoftware);
+    var top10=[]; 
     if(freesoftware.length==0)
       return 0;
-    else
-      return freesoftware;
+    else{
+      if(freesoftware.length<=10){
+        for(var j=0;j<freesoftware.length;j++){
+          var maxVotes=-1;
+          var maxObj=null;
+          var maxIdx=0;
+          for(var i=0;i<freesoftware.length;i++){
+            if(parseInt(freesoftware[i].upVotes)>maxVotes){
+              maxVotes=parseInt(freesoftware[i].upVotes);
+              maxObj=freesoftware[i];
+              maxIdx=i;
+              console.log("max found : "+freesoftware[i])
+            }
+          }
+          console.log("Pushing now: "+maxObj);
+          var obj={
+            name: maxObj.name,
+            license: maxObj.license,
+            upVotes: maxObj.upVotes
+          };
+          top10.push(obj);
+          freesoftware[maxIdx].upVotes=-1;
+        }
+      }
+      else{
+        for(var j=0;j<10;j++){
+          var maxVotes=-1;
+          var maxObj=null;
+          var maxIdx=0;
+          for(var i=0;i<freesoftware.length;i++){
+            if(parseInt(freesoftware[i].upVotes)>max){
+              maxVotes=parseInt(freesoftware[i].upVotes);
+              maxObj=freesoftware[i];
+              maxIdx=i;
+              console.log("max found : "+freesoftware[i])
+            }
+          }
+          console.log("Pushing now: "+maxObj);
+          var obj={
+            name: maxObj.name,
+            license: maxObj.license,
+            upVotes: maxObj.upVotes
+          };
+          top10.push(obj);
+          freesoftware[maxIdx].upVotes=-1;
+        }
+      }
+      return top10;
+    }
 }
 
 async function createFreesoftware(freeSoftware) {
