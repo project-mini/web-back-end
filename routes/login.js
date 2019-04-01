@@ -15,7 +15,8 @@ router.get("/", (req, res) => {
 
   github(req.session.csrf_string);
   github(process.env.ALT_CLIENT_ID);
-
+  console.log(config.get('client_id'));
+  console.log(config.get('redirect_uri'));
   const githubAuthUrl =
     "https://github.com/login/oauth/authorize?" +
     qs.stringify({

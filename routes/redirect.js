@@ -24,17 +24,18 @@ router.all("/", (req, res) => {
         url:
           "https://github.com/login/oauth/access_token?" +
           qs.stringify({
-            client_id: config.get("client_id"),
-            client_secret: config.get("client_secret"),
+            client_id: process.env.ALT_CLIENT_ID,
+            client_secret: process.env.ALT_CLIENT_SECRET,
             code: code,
-            redirect_uri: config.get("redirect_uri"),
+            redirect_uri: process.env.ALT_REDIRECT,
             state: req.session.csrf_string
           })
       },
       (error, response, body) => {
         github("Your access token :", qs.parse(body));
         req.session.access_token = qs.parse(body).access_token;
-        res.redirect(config.get("home"));
+        // res.redirect(A);
+        console.log(req.session.access_token);
       }
     );
   } else {

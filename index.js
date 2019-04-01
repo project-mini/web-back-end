@@ -31,7 +31,7 @@ app.use("/api/login", login);
 app.use("/api/logout", logout);
 app.use("/api/proprietary", proprietary);
 app.use("/api/alternatives", alternatives);
-app.use("/api/redirect", redirect);
+app.use("/login", redirect);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Serving at port ${PORT}...`));
