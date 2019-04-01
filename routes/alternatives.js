@@ -3,6 +3,13 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controller/cruds_softwares');
 
+router.get('/license/:pattern',async (req,res)=>{
+    const freeSoftware = await controller.checkLicense(req.params.pattern);
+    if (freeSoftware.length == 0)
+        return res.status(404).send('No search result found for ' + req.params.pattern);
+    res.send(freeSoftware);
+})
+
 router.post('/', async (req, res) => {
     try {
         const freeSoftware = {
@@ -57,7 +64,7 @@ router.get('/', async (req,res) => {
     const freeSoftwares = await controller.getTopAlternatives();
     if(freeSoftwares==0)
         return res.status(404).send('No result found for Alternative softwares');
-    
+
     res.send(freeSoftwares);
 });
 

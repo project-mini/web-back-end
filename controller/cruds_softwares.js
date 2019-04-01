@@ -105,6 +105,15 @@ async function getAllFreeSoftwares() {
   return freesoftware;
 }
 
+async function checkLicense(pattern){
+	var searchPattern = new RegExp(pattern, "i");
+	const freesoftware=await Freesoftware.find({
+		name: searchPattern
+	}).select({name: 1, license: 1});
+	console.log(freesoftware);
+	return freesoftware;
+}
+
 async function getProprietarysoftwares(pattern) {
   var searchPattern = new RegExp(pattern, "i");
   const proprietary = await Proprietarysoftware.find({
@@ -234,3 +243,4 @@ module.exports.decreaseUpvotes = decreaseUpvotes;
 module.exports.increaseDownvotes = increaseDownvotes;
 module.exports.decreaseDownvotes = decreaseDownvotes;
 module.exports.getTopAlternatives = getTopAlternatives;
+module.exports.checkLicense = checkLicense;
