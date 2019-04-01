@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 const PasswordComplexity = require("joi-password-complexity");
-
+const jwt = require("jsonwebtoken");
 //schema for user credentials
-const user = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
@@ -22,7 +22,7 @@ const user = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    match: new RegExp("^[a-zA-Z0-9]{3,30}$"),
+    match: new RegExp("^[a-zA-Z0-9-]{3,30}$"),
     unique: true
   },
   password: {
@@ -47,6 +47,18 @@ const user = new mongoose.Schema({
   }
 });
 
+userSchema.methods.generateAuthToken = function() {
+  return jwt.sign(
+    {
+      _id: this._id,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      username: this.username
+    },
+    process.env.ALT_JWT_PRIVATE_KEY,
+    { expiresIn: "168h" }
+  );
+};
 function validateUser(user) {
   const schema = {
     firstName: Joi.string()
@@ -62,7 +74,7 @@ function validateUser(user) {
       .required()
       .min(3)
       .max(30)
-      .regex(new RegExp("^[a-zA-Z-_0-9]{3,30}$")),
+      .regex(new RegExp("^[a-zA-Z-_0-9-]{3,30}$")),
     email: Joi.string()
       .required()
       .email(),
@@ -76,5 +88,5 @@ function validateUser(user) {
   if (passwordError) return passwordError;
 }
 
-exports.User = mongoose.model("UserCredentials", user);
+exports.User = mongoose.model("UserCredentials", userSchema);
 exports.validateUser = validateUser;
