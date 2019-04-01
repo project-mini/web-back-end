@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controller/cruds_softwares');
 
-router.get('/license/:pattern',async (req,res)=>{
-    const freeSoftware = await controller.checkLicense(req.params.pattern);
+router.post('/license/',async (req,res)=>{
+    const freeSoftware = await controller.checkLicense(req.body.search);
     if (freeSoftware.length == 0)
-        return res.status(404).send('No search result found for ' + req.params.pattern);
+        return res.status(404).send('No search result found for ' + req.body.search);
     res.send(freeSoftware);
 })
 
