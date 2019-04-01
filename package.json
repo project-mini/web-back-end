@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "bcrypt": "^3.0.5",
+    "debug": "^4.1.1",
     "express": "^4.16.4",
     "joi": "^14.3.1",
     "joi-password-complexity": "^2.0.1",
