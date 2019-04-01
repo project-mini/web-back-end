@@ -1,6 +1,6 @@
 {
   "client_id": "",
   "client_secret": "",
-  "home": "http://localhost:3000",
-  "redirect_uri": "http://localhost:3000/api/redirect"
+  "home": "http://dry-dusk-50998.herokuapp.com",
+  "redirect_uri": "http://dry-dusk-50998.herokuapp.com/api/redirect"
 }
