@@ -57,7 +57,7 @@ router.get('/', async (req,res) => {
     const freeSoftwares = await controller.getTopAlternatives();
     if(freeSoftwares==0)
         return res.status(404).send('No result found for Alternative softwares');
-
+    
     res.send(freeSoftwares);
 });
 

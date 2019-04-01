@@ -6,8 +6,10 @@ S.No    ENDPOINT                                	FUNCTION
 	
 1       'GET' /                                 	Home Page
 	
-2       'GET' /api/alternatives                 	Return an array of all alternatives (Free Softwares)
-                                                	as array of objects.
+2       'GET' /api/alternatives                 	Return an array of the top 10 alternatives (Free 
+													Softwares) as an array of objects containing the name,
+													license and upVotes for the softwares in decreasing
+													order.
 	
 3       'GET' /api/proprietary                  	Returns an array of all proprietary softwares as an
 													array of objects.
