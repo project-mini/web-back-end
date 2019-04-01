@@ -7,6 +7,8 @@ const { User, validateUser } = require("../models/usercredentials");
 const crudsSignUp = require("../controller/cruds_sign_up");
 
 module.exports = async function(req, res, next) {
+  const token = req.header("x-auth-token");
+
   const { error } = validateUser(req.body);
   if (error) return res.status(400).send(error["message"]);
   let user;
@@ -16,6 +18,9 @@ module.exports = async function(req, res, next) {
   } catch (err) {
     if (user) return res.status(400).send("User already registered!");
   }
+
+  req.body.tokenInvalid = false;
+  if (token) req.body.tokenInvalid = true;
 
   user = new User(
     _.pick(req.body, [

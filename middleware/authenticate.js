@@ -8,7 +8,7 @@ module.exports = async function(req, res, next) {
     const token = req.header("x-auth-token");
     let result;
     let user;
-    if (token) {
+    if (token && !req.body.tokenInvalid) {
       try {
         const decoded = jwt.verify(token, process.env.ALT_JWT_PRIVATE_KEY);
         user = await User.findOne({
