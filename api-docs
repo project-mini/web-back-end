@@ -38,7 +38,13 @@ S.No    ENDPOINT                                	FUNCTION
 													
 													Each alternative software will be initialized with 0
 													upvotes and downvotes (Obvio)
-													This fields will be accessed via req.body.<field-name>
+													These fields will be accessed via req.body.<field-name>
+
+													If the suggestedBy field is not specified, then the 
+													default value is taken to be "anonymous". If the input
+													syntax does not match this standard, the returned value
+													is a string specifying the error.
+													
 
 5		'PUT' /api/alternatives/upvote/<id>			This will increase number of upvotes for the given 
 													alternative software specified by id by 1. The id has 
@@ -87,12 +93,13 @@ S.No    ENDPOINT                                	FUNCTION
 													is a string specifying the error.
 
 
-11		'GET' /api/proprietary/<pattern>			Used to search for proprietary softwares. The pattern 
+11		'POST' /api/proprietary/					Used to search for proprietary softwares. The pattern 
 													will be used as a regular expression to search for 
 													proprietary softwares. Pass the search string the user
 													enters to this endpoint. Returns an array of objects
 													corresponding to the proprietary softwares matching the
-													given search string.
+													given search string. The string will be passed as a 
+													property 'search' inside the req.body.
 
 
 12		'POST' /api/alternatives/license/			Used to search alternative softwares to check their 

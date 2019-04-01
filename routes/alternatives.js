@@ -11,21 +11,17 @@ router.post('/license/',async (req,res)=>{
 })
 
 router.post('/', async (req, res) => {
-    try {
-        const freeSoftware = {
-            name: req.body.name,
-            shortDescription: req.body.shortDescription,
-            handle: req.body.handle,
-            license: req.body.license,
-            suggestedBy: req.body.suggestedBy
-        };
-        const result = await controller.addFreeSoftware(freeSoftware);
-        console.log(result);
-        res.send(freeSoftware);
-    } catch (err) {
-        console.log('Couldn\'t write on the database ...');
-        res.status(400).send('Internal Error');
+    const freeSoftware = {
+        name: req.body.name,
+        shortDescription: req.body.shortDescription,
+        handle: req.body.handle,
+        license: req.body.license,
+        suggestedBy: req.body.suggestedBy
     }
+    const result = await controller.addFreeSoftware(freeSoftware);
+    console.log(result);
+    res.send(result);
+
 });
 
 router.put('/upvote/:id', async (req,res) => {

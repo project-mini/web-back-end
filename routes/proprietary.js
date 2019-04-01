@@ -11,8 +11,8 @@ router.post('/', async (req, res) => {
     };
     const result = await controller.addProprietarySoftware(proprietary);
     console.log(result);
-    if(result!=0)
-        res.send(result);
+    
+    res.send(result);
 });
 
 router.get('/', async (req, res) => {
