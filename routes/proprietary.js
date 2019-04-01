@@ -22,10 +22,10 @@ router.get('/', async (req, res) => {
     res.send(proprietary);
 });
 
-router.get('/:pattern', async (req, res) => {
-    const proprietary = await controller.searchProprietarySoftwares(req.params.pattern);
+router.post('/search', async (req, res) => {
+    const proprietary = await controller.searchProprietarySoftwares(req.body.search);
     if (proprietary.length == 0)
-        return res.status(404).send('No search result found for' + req.params.pattern);
+        return res.status(404).send('No search result found for' + req.body.search);
     res.send(proprietary);
 });
 
