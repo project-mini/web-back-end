@@ -34,11 +34,11 @@ router.all("/", (req, res) => {
       (error, response, body) => {
         github("Your access token :", qs.parse(body));
         req.session.access_token = qs.parse(body).access_token;
-        res.redirect("http://localhost:3000/");
+        res.redirect(config.get('home'));
       }
     );
   } else {
-    res.redirect("http://localhost:3000/");
+    res.redirect(config.get('home'));
   }
 });
 
