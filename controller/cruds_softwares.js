@@ -20,10 +20,16 @@ mongoose
   );
 
 async function createProprietarysoftware(properietary) {
-  const proprietarysoftware = new Proprietarysoftware(properietary);
-  console.log("saving result to proprietary");
-  const result = await proprietarysoftware.save();
-  console.log(result);
+  try{
+		const proprietarysoftware = new Proprietarysoftware(properietary);
+  	console.log("saving result to proprietary");
+  	const result = await proprietarysoftware.save();
+		console.log(result);
+		return result;
+	}catch(err){
+		console.log("Error while writing to the database:",err.message);
+		return "Error while writing to the database:"+err.message;
+	}
 }
 
 async function getTopAlternatives(){

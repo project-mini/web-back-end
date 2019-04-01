@@ -80,6 +80,11 @@ S.No    ENDPOINT                                	FUNCTION
 															tags: ['os','microsoft'],
 															requestedBy: "killPr0cess"
 														}
+													
+													If the requestedBy field is not specified, then the 
+													default value is taken to be "anonymous". If the input
+													syntax does not match this standard, the returned value
+													is a string specifying the error.
 
 
 11		'GET' /api/proprietary/<pattern>			Used to search for proprietary softwares. The pattern 
