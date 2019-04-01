@@ -21,6 +21,8 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.11",
     "mongoose": "^5.4.17",
-    "randomstring": "^1.1.5"
+    "querystring": "^0.2.0",
+    "randomstring": "^1.1.5",
+    "request": "^2.88.0"
   }
 }
