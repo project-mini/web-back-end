@@ -89,4 +89,10 @@ S.No    ENDPOINT                                	FUNCTION
 													corresponding to the proprietary softwares matching the
 													given search string.
 
+
+12		'GET' /api/alternatives/license/<pattern>	Used to search alternative softwares to check their 
+													license. Returns an array of objects containing the name
+													of the alternatives matching the pattern. The matching is
+													done as regExp matching ignoring case.
+
 ================================================================================================================
