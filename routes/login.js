@@ -20,8 +20,8 @@ router.get("/", (req, res) => {
   const githubAuthUrl =
     "https://github.com/login/oauth/authorize?" +
     qs.stringify({
-      client_id: config.get('client_id'),
-      redirect_uri: config.get('redirect_uri'),
+      client_id: process.env.ALT_CLIENT_ID,
+      redirect_uri: process.env.ALT_REDIRECT,
       state: req.session.csrf_string,
       scope: "user:email"
     });
