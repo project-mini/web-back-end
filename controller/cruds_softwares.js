@@ -20,10 +20,16 @@ mongoose
   );
 
 async function createProprietarysoftware(properietary) {
-  const proprietarysoftware = new Proprietarysoftware(properietary);
-  console.log("saving result to proprietary");
-  const result = await proprietarysoftware.save();
-  console.log(result);
+  try{
+		const proprietarysoftware = new Proprietarysoftware(properietary);
+  	console.log("saving result to proprietary");
+  	const result = await proprietarysoftware.save();
+		console.log(result);
+		return result;
+	}catch(err){
+		console.log("Error while writing to the database:",err.message);
+		return "Error while writing proprietary software to the database:"+err.message;
+	}
 }
 
 async function getTopAlternatives(){
@@ -87,10 +93,16 @@ async function getTopAlternatives(){
 }
 
 async function createFreesoftware(freeSoftware) {
-  const freesoftware = new Freesoftware(freeSoftware);
-  console.log("saving result to free softwares");
-  const result = await freesoftware.save();
-  console.log(result);
+  try{
+		const freesoftware = new Freesoftware(freeSoftware);
+  	console.log("saving result to free softwares");
+  	const result = await freesoftware.save();
+		console.log(result);
+		return result;
+	}catch(err){
+		console.log("Error while writing to the database:",err.message);
+		return "Error while writing alternative to the database:"+err.message;
+	}
 }
 
 async function getAllFreeSoftwares() {

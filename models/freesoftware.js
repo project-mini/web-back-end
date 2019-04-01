@@ -15,7 +15,12 @@ const fsSchema = new mongoose.Schema({
     handle: {
         // What's this for @karan? I think u got it @m_zaink
         type: String,
-        required: true
+        validate: {
+            validator: function(v) {
+              return v && v.length > 0;
+            },
+            message: "Specify a handle for alternative"
+        }
     },
     license: {
         type: String,
@@ -24,7 +29,7 @@ const fsSchema = new mongoose.Schema({
     suggestedBy: {
         // This really should be an id or email @karan no! Give reason
         type: String,
-        required: true
+        default: "anonymous"
     }
 });
 
