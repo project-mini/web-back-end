@@ -1,4 +1,6 @@
 {
-    "client_id":"ALT_CLIENT_ID",
-    "client_secret":"ALT_CLIENT_SECRET"
+  "client_id": "ALT_CLIENT_ID",
+  "client_secret": "ALT_CLIENT_SECRET",
+  "home": "ALT_HOME",
+  "redirect_uri": "ALT_REDIRECT"
 }
