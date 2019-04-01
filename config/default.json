@@ -1,4 +1,6 @@
 {
-    "client_id":"",
-    "client_secret":""
+  "client_id": "",
+  "client_secret": "",
+  "home": "http://localhost:3000",
+  "redirect_uri": "http://localhost:3000/api/redirect"
 }
