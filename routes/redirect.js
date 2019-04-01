@@ -27,18 +27,18 @@ router.all("/", (req, res) => {
             client_id: config.get("client_id"),
             client_secret: config.get("client_secret"),
             code: code,
-            redirect_uri: config.get('redirect_uri'),
+            redirect_uri: config.get("redirect_uri"),
             state: req.session.csrf_string
           })
       },
       (error, response, body) => {
         github("Your access token :", qs.parse(body));
         req.session.access_token = qs.parse(body).access_token;
-        res.redirect(config.get('home'));
+        res.redirect(config.get("home"));
       }
     );
   } else {
-    res.redirect(config.get('home'));
+    res.redirect(config.get("home"));
   }
 });
 
