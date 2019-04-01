@@ -34,7 +34,6 @@ router.all("/", (req, res) => {
       (error, response, body) => {
         github("Your access token :", qs.parse(body));
         req.session.access_token = qs.parse(body).access_token;
-        github(JSON.parse(req.session));
         res.redirect(config.get('home'));
       }
     );
