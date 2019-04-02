@@ -8,7 +8,7 @@ const register = require("../middleware/register");
 router.post("/", [register, authenticate], async (req, res) => {
   res
   .header("x-auth-token", req.body.user.generateAuthToken())
-  .send(`Welcome ${req.body.user.username}`);
+  .send(`Welcome ${req.body.user.firstName} ${req.body.user.lastName}`);
 });
 
 module.exports = router;
