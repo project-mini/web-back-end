@@ -71,7 +71,7 @@ async function getTopAlternatives(){
           var maxObj=null;
           var maxIdx=0;
           for(var i=0;i<freesoftware.length;i++){
-            if(parseInt(freesoftware[i].upVotes)>max){
+            if(parseInt(freesoftware[i].upVotes)>maxVotes){
               maxVotes=parseInt(freesoftware[i].upVotes);
               maxObj=freesoftware[i];
               maxIdx=i;
