@@ -38,7 +38,13 @@ S.No    ENDPOINT                                	FUNCTION
 													
 													Each alternative software will be initialized with 0
 													upvotes and downvotes (Obvio)
-													This fields will be accessed via req.body.<field-name>
+													These fields will be accessed via req.body.<field-name>
+
+													If the suggestedBy field is not specified, then the 
+													default value is taken to be "anonymous". If the input
+													syntax does not match this standard, the returned value
+													is a string specifying the error.
+													
 
 5		'PUT' /api/alternatives/upvote/<id>			This will increase number of upvotes for the given 
 													alternative software specified by id by 1. The id has 
@@ -80,23 +86,35 @@ S.No    ENDPOINT                                	FUNCTION
 															tags: ['os','microsoft'],
 															requestedBy: "killPr0cess"
 														}
+													
+													If the requestedBy field is not specified, then the 
+													default value is taken to be "anonymous". If the input
+													syntax does not match this standard, the returned value
+													is a string specifying the error.
 
 
-11		'GET' /api/proprietary/<pattern>			Used to search for proprietary softwares. The pattern 
+11		'POST' /api/proprietary/					Used to search for proprietary softwares. The pattern 
 													will be used as a regular expression to search for 
 													proprietary softwares. Pass the search string the user
 													enters to this endpoint. Returns an array of objects
 													corresponding to the proprietary softwares matching the
-													given search string.
+													given search string. The string will be passed as a 
+													property 'search' inside the req.body.
 
 
-12		'GET' /api/alternatives/license/<pattern>	Used to search alternative softwares to check their 
+12		'POST' /api/alternatives/license/			Used to search alternative softwares to check their 
 													license. Returns an array of objects containing the name
-													of the alternatives matching the pattern. The matching is
-													done as regExp matching ignoring case.
+													of the alternatives matching the search property of the req.body
+													object. The matching is done as regExp matching ignoring case.
 
 
-13. 	'POST' /api/signup							Used to register a user on the database for the first time.
+13		'POST' /api/proprietary/search/				Used to search proprietary softwares. Returns an array of objects 
+													containing the name and shortDescription of the proprietary softwares
+													matching the search property of the req.bodyobject. The matching is done
+													as regExp matching ignoring case.
+
+
+14. 	'POST' /api/signup							Used to register a user on the database for the first time.
 													
 													eg. : 
 													{
@@ -119,7 +137,8 @@ S.No    ENDPOINT                                	FUNCTION
 													If so, it shall be discarded and new user shall be logged in if user-credentials
 													are appropriate.
 
-14. 	'POST' /api/login							Used to login a user onto the application.
+
+15. 	'POST' /api/login							Used to login a user onto the application.
 
 													There are two ways of logging in : 
 													1. Send user-credentials as follows : 
@@ -137,7 +156,5 @@ S.No    ENDPOINT                                	FUNCTION
 													jwt is to be sent in the headers under the name 'x-auth-token'.
 													The authenticity of the token is varifies(including it's expiry date)
 													and a response is returned.
-
-
-
+				
 ================================================================================================================
