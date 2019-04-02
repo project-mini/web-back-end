@@ -130,7 +130,7 @@ async function getProprietarysoftwares(pattern) {
   var searchPattern = new RegExp(pattern, "i");
   const proprietary = await Proprietarysoftware.find({
     name: searchPattern
-  }).select({ name: 1, shortDescription: 1 });
+  }).select({ name: 1, shortDescription: 1, tags: 1 });
   console.log(proprietary);
   return proprietary;
 }
