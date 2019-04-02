@@ -6,7 +6,7 @@ router.post('/', async (req, res) => {
     const proprietary = {
         name: req.body.name,
         shortDescription: req.body.shortDescription,
-        tags: req.body.tags,
+        tags: req.body.tags[0].split(';'),
         requestedBy: req.body.requestedBy
     };
     const result = await controller.addProprietarySoftware(proprietary);
