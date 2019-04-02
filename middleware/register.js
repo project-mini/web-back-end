@@ -16,10 +16,10 @@ module.exports = async function(req, res, next) {
 
   try {
     user = await User.findOne({ email: req.body.email });
-    if (user) throw err;
+    if (user) return res.status(400).send("User already registered!");
   } catch (err) {
     console.log(err);
-    return res.status(400).send("User already registered!");
+    return res.state(500).send('Server error');
   }
 
   req.body.tokenInvalid = false;
