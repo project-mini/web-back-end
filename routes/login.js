@@ -12,7 +12,7 @@ router.post("/", authenticate, (req, res) => {
     .send(`Welcome ${req.body.user.firstName} ${req.body.user.lastName}`);
 });
 
-router.post("/me", authenticate, (req, res) => {
+router.get("/me", authenticate, (req, res) => {
   res.send(
     _.pick(req.body.user, ["firstName", "lastName", "email"])
   );
