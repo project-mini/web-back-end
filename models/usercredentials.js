@@ -47,7 +47,7 @@ userSchema.methods.generateAuthToken = function() {
     process.env.ALT_JWT_PRIVATE_KEY,
     { expiresIn: "168h" } // expires in a week
   );
-}
+};
 
 function validateUser(user) {
   const schema = {
@@ -66,8 +66,9 @@ function validateUser(user) {
   const schemaError = Joi.validate(user, schema);
   const passwordError = Joi.validate(user.password, new PasswordComplexity());
 
-  if (schemaError) return schemaError;
-  if (passwordError) return passwordError;
+  if (schemaError.error) return schemaError;
+  else if (passwordError.error) return passwordError;
+  else return {error: null};
 }
 
 exports.User = mongoose.model("UserCredentials", userSchema);
