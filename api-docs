@@ -113,5 +113,20 @@ S.No    ENDPOINT                                	FUNCTION
 													matching the search property of the req.bodyobject. The matching is done
 													as regExp matching ignoring case.
 
+14. 	'POST' /api/signup							Used to sign-up a user onto the application. It takes user credentials in
+													the request's body and then validates for correcteness. If validation 
+													passes, the user is stored onto the database and automatically logged in.
+													Additionally, a json web token is sent for future use. If the validation
+													fails, the user is prompted with appropriate error message.
+
+15. 	'POST' /api/login							Used to log-in a user onto the application. There are two ways of doing it : 
+													1. Through log-in credentials : This method involves user sending in his
+													uername/email and password. On successful validation of the credentials,
+													user is logged onto the system as well as a json web token is sent for
+													future use(session handling).
+
+													2. Through json web token : If a user queries with a valid json web token,
+													he is logged onto the system after varifying the token's authenticity.
+													Otherwise an \texttt{invalid-token} error is raised.
 				
 ================================================================================================================
