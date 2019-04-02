@@ -95,4 +95,49 @@ S.No    ENDPOINT                                	FUNCTION
 													of the alternatives matching the pattern. The matching is
 													done as regExp matching ignoring case.
 
+
+13. 	'POST' /api/signup							Used to register a user on the database for the first time.
+													
+													eg. : 
+													{
+														firstName : 'martin',
+														lastName : 'luther',
+														email: 'marting@luther.com',
+														password: 'somethingsomething*8',
+														gender: 'male',
+														username: 'yo-martin'
+													}
+
+													* If a user is already registered(that is his email is already
+													present with our database), 400 error is sent ("user already registered!')
+													
+													* Otherwise, the credentials so provided are tested for validity and then
+													stored onto the database. Then the user is automatically logged onto the 
+													application and a json web token is sent in response's header for later use.
+
+													* This router also checks if a spoofed or stolen access_token is being sent. 
+													If so, it shall be discarded and new user shall be logged in if user-credentials
+													are appropriate.
+
+14. 	'POST' /api/login							Used to login a user onto the application.
+
+													There are two ways of logging in : 
+													1. Send user-credentials as follows : 
+													e.g. :
+													{
+														'username_email': 'kirk',
+														'password': 'kirkirki&8'
+													}
+													
+													This method shall take the credentials, validate them and log the user in.
+													Also, a json web token is sent in response's header for later use.
+													If the credentials fail, a 400 error is sent ('Incorrect email or password!')
+
+													2. Send a previously received json web token : 
+													jwt is to be sent in the headers under the name 'x-auth-token'.
+													The authenticity of the token is varifies(including it's expiry date)
+													and a response is returned.
+
+
+
 ================================================================================================================
