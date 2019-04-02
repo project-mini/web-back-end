@@ -121,7 +121,7 @@ async function checkLicense(pattern){
 	var searchPattern = new RegExp(pattern, "i");
 	const freesoftware=await Freesoftware.find({
 		name: searchPattern
-	}).select({name: 1, license: 1});
+	}).select({name: 1, license: 1, licenseLink: 1});
 	console.log(freesoftware);
 	return freesoftware;
 }
