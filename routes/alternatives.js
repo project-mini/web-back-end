@@ -16,7 +16,8 @@ router.post('/', async (req, res) => {
         shortDescription: req.body.shortDescription,
         handle: req.body.handle,
         license: req.body.license,
-        suggestedBy: req.body.suggestedBy
+        suggestedBy: req.body.suggestedBy,
+        licenseLink: 'https://duckduckgo.com/?q='+req.body.license+'+license'
     }
     const result = await controller.addFreeSoftware(freeSoftware);
     console.log(result);

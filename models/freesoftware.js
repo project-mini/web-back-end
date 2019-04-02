@@ -30,6 +30,10 @@ const fsSchema = new mongoose.Schema({
         // This really should be an id or email @karan no! Give reason
         type: String,
         default: "anonymous"
+    },
+    licenseLink: {
+        type: String,
+        default: 'https://opensource.org/licenses/'
     }
 });
 

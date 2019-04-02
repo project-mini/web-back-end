@@ -43,7 +43,9 @@ S.No    ENDPOINT                                	FUNCTION
 													If the suggestedBy field is not specified, then the 
 													default value is taken to be "anonymous". If the input
 													syntax does not match this standard, the returned value
-													is a string specifying the error.
+													is a string specifying the error. The licenseLink will be
+													set using the given license and appending it to the duckduckgo
+													search query.
 													
 
 5		'PUT' /api/alternatives/upvote/<id>			This will increase number of upvotes for the given 
@@ -106,7 +108,8 @@ S.No    ENDPOINT                                	FUNCTION
 													license. Returns an array of objects containing the name
 													of the alternatives matching the search property of the req.body
 													object. The matching is done as regExp matching ignoring case.
-
+													Also a field called licenseLink is sent which is a search 
+													query to duckduckgo to search for the particular license.
 
 13		'POST' /api/proprietary/search/				Used to search proprietary softwares. Returns an array of objects 
 													containing the name and shortDescription of the proprietary softwares
