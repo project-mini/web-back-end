@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 const PasswordComplexity = require("joi-password-complexity");
 const jwt = require("jsonwebtoken");
+
 //schema for user credentials
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -13,17 +14,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     match: new RegExp("^[a-zA-Z' ]{1,50}$")
-  },
-  gender: {
-    type: String,
-    lowercase: true,
-    enum: ["male", "female", "something-else"]
-  },
-  username: {
-    type: String,
-    required: true,
-    match: new RegExp("^[a-zA-Z0-9-]{3,30}$"),
-    unique: true
   },
   password: {
     type: String,
@@ -52,12 +42,13 @@ userSchema.methods.generateAuthToken = function() {
     {
       firstName: this.firstName,
       lastName: this.lastName,
-      username: this.username
+      email: this.email
     },
     process.env.ALT_JWT_PRIVATE_KEY,
-    { expiresIn: "168h" }
+    { expiresIn: "168h" } // expires in a week
   );
-};
+}
+
 function validateUser(user) {
   const schema = {
     firstName: Joi.string()
@@ -66,14 +57,6 @@ function validateUser(user) {
     lastName: Joi.string()
       .required()
       .regex(new RegExp("^[a-zA-Z' ]{1,50}$")),
-    gender: Joi.string()
-      .required()
-      .valid("male", "female", "something-else"),
-    username: Joi.string()
-      .required()
-      .min(3)
-      .max(30)
-      .regex(new RegExp("^[a-zA-Z-_0-9-]{3,30}$")),
     email: Joi.string()
       .required()
       .email(),
