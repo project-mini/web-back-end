@@ -146,6 +146,9 @@ async function getAllProprietarySoftwares() {
 }
 
 async function getAlternatives(id) {
+	if(mongoose.Schema.Types.ObjectId.isValid(id)){
+		return -1;
+	}
   const proprietary = await Proprietarysoftware.findById(id);
   console.log(proprietary);
   if (!proprietary) {
