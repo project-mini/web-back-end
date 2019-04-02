@@ -50,7 +50,6 @@ const userSchema = new mongoose.Schema({
 userSchema.methods.generateAuthToken = function() {
   return jwt.sign(
     {
-      _id: this._id,
       firstName: this.firstName,
       lastName: this.lastName,
       username: this.username
