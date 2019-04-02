@@ -69,12 +69,10 @@ router.get('/:id', async (req, res) => {
     try{
         const alternatives = await controller.getAlternatives(req.params.id);
         console.log(alternatives);
-        if(alternatives == -1)
-            return res.status(400).send('Internal server error - Invalid ID returned');
-        else if (alternatives.length == 0)
+        if (alternatives.length == 0)
             return res.status(404).send('No alternatives found for' + req.params.id);
-
         res.send(alternatives);
+        
     }catch(err){
         res.status(404).send('Error fetching alternatives for the specified id');
     }
