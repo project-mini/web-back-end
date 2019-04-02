@@ -9,7 +9,6 @@ app.use(express.urlencoded({ extended: true }));
 const root = require("./routes/root");
 const sign_up = require("./routes/sign_up");
 const login = require("./routes/login");
-const logout = require('./routes/logout');
 const proprietary = require("./routes/proprietary");
 const alternatives = require("./routes/alternatives");
 
@@ -27,7 +26,6 @@ app.use(
 app.use("/", root);
 app.use("/api/signup", sign_up);
 app.use("/api/login", login);
-app.use("/api/logout", logout);
 app.use("/api/proprietary", proprietary);
 app.use("/api/alternatives", alternatives);
 
