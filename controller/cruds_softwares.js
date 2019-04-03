@@ -158,8 +158,18 @@ async function getAlternatives(id) {
     handle: { $in: proprietary.tags }
   });
   console.log("Alternatives found:");
+  
+  for(var i=0;i<alternatives.length;i++){
+    for(var j=0;j<alternatives.length-i-1;j++){
+      if(alternatives[j].upVotes<alternatives[j+1].upVotes){
+        let temp=alternatives[j];
+        alternatives[j]=alternatives[j+1];
+        alternatives[j+1]=temp;
+      }
+    }
+  }
   console.log(alternatives);
-
+  
   return alternatives;
 }
 

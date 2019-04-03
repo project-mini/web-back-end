@@ -3,12 +3,13 @@ const router = express.Router();
 const controller = require('../controller/cruds_softwares');
 
 router.post('/', async (req, res) => {
-    const proprietary = {
+    let proprietary = {
         name: req.body.name,
         shortDescription: req.body.shortDescription,
         tags: req.body.tags.split(";"),
         requestedBy: req.body.requestedBy
     };
+    proprietary.tags.pop();
     const result = await controller.addProprietarySoftware(proprietary);
     console.log(result);
     
