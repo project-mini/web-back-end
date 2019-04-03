@@ -42,7 +42,8 @@ userSchema.methods.generateAuthToken = function() {
     {
       firstName: this.firstName,
       lastName: this.lastName,
-      email: this.email
+      email: this.email,
+      id: this._id
     },
     process.env.ALT_JWT_PRIVATE_KEY,
     { expiresIn: "168h" } // expires in a week
