@@ -13,8 +13,9 @@ router.post("/", authenticate, (req, res) => {
 });
 
 router.get("/me", authenticate, (req, res) => {
+  console.log(req.body.user);
   res.send(
-    _.pick(req.body.user, ["firstName", "lastName", "email"])
+    _.pick(req.body.user, ["firstName", "lastName", "email", "id"])
   );
 });
 
