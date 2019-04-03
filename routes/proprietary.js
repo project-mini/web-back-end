@@ -9,7 +9,8 @@ router.post('/', async (req, res) => {
         tags: req.body.tags.split(";"),
         requestedBy: req.body.requestedBy
     };
-    proprietary.tags.pop();
+    if(proprietary.tags[proprietary.tags.length-1]=="")
+        proprietary.tags.pop();
     const result = await controller.addProprietarySoftware(proprietary);
     console.log(result);
     
