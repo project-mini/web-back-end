@@ -11,6 +11,9 @@ router.post('/', async (req, res) => {
     };
     if(proprietary.tags[proprietary.tags.length-1]=="")
         proprietary.tags.pop();
+    for(var i=0;i<proprietary.tags.length;i++){
+         proprietary.tags[i] = proprietary.tags[i].toLowerCase();
+    }
     const result = await controller.addProprietarySoftware(proprietary);
     console.log(result);
     
